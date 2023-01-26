@@ -5,3 +5,28 @@ A python script to monitor checksums of your files and detect possible data corr
 To detect data corruption, the script compares the current file modification timestamps with the ones from an index file.
 If the modification timestamp didn't change, but the checksums are different, there is a possibility of data corruption.
 The index file can be updated automatically if new files, or valid changed files are detected, therefore a full rescan isn't needed.
+
+The index file is stored in the directory you specify to scan. The file is called ".metadata.csv" and is hidden on windows as well as linux systems by default.
+
+# Installation
+```sh
+git pull https://github.com/Surferr0815/fileintegrity-monitor.git fileintegrity-monitor
+pip install -r fileintegrity-monitor/requirements.txt
+```
+
+# Usage
+
+To create a completely new index file you need to use this command:
+```sh
+python integrity-monitor.py create <dir_path>
+```
+
+If you want to check if there are corrupted files and automatically update the index file on valid changed files, execute:
+```sh
+python integrity-monitor.py monitor <dir_path>
+```
+
+If you only want to check the files but not update the index file, execute:
+```sh
+python integrity-monitor.py check <dir_path>
+```
