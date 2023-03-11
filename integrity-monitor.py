@@ -38,7 +38,7 @@ def hash(path):
     return m5Hash.hexdigest()
 
 def scanTree(path):
-    """Recursively yield DirEntry objects for given directory."""
+    """Recursivley scan directory"""
     for entry in os.scandir(path):
         if(entry.is_dir(follow_symlinks=False)):
             yield from scanTree(entry.path) 
@@ -250,7 +250,7 @@ def main():
 	if(args.verbose):
 		global verbose
 		verbose = True
-	
+
 	'''Strip backslash and quotes at the end of the path'''
 	args.path[0] = re.sub('\\"$', '', args.path[0])
 
@@ -260,6 +260,7 @@ def main():
 		check(args.path[0], False)
 	if(args.command[0] == "monitor"):
 		check(args.path[0], True)
+
 
 if __name__ == '__main__':
 	main()
