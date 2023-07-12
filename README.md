@@ -10,7 +10,7 @@ The index file is stored in the directory you specify to scan. The file is calle
 
 # Installation
 ```sh
-git pull https://github.com/Surferr0815/fileintegrity-monitor.git fileintegrity-monitor
+git clone https://github.com/Surferr0815/fileintegrity-monitor.git fileintegrity-monitor
 pip install -r fileintegrity-monitor/requirements.txt
 ```
 
