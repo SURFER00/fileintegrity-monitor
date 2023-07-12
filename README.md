@@ -8,6 +8,9 @@ The index file can be updated automatically if new files, or changed files with 
 
 The index file is stored in the directory you specify to scan. The file is called ".metadata.csv" and is hidden on windows as well as linux systems by default.
 
+# What it can't do
+This tool can't detect file corruption of files that have been changed and there was no rescan performed before the data corruption.
+
 # Installation
 ```sh
 git clone https://github.com/Surferr0815/fileintegrity-monitor.git fileintegrity-monitor
