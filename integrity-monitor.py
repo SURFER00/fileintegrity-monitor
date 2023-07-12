@@ -38,7 +38,8 @@ def hash(path):
     return m5Hash.hexdigest()
 
 def scanTree(path):
-    """Recursivley scan directory"""
+    '''Recursivley scan directory'''
+    
     for entry in os.scandir(path):
         if(entry.is_dir(follow_symlinks=False)):
             yield from scanTree(entry.path) 
@@ -52,10 +53,12 @@ def create(path):
 	metadata = csv.DictWriter(metadata_file, fieldnames=['path', 'hash', 'mtime'])
 
 	'''Hide metadata file on windows systems'''
+
 	if(os.name == "nt"):
 		subprocess.check_call(["attrib", "+H", path + metadata_file_path])
 
 	'''Write table header information'''
+
 	metadata.writeheader()
 	
 	files = []
@@ -84,6 +87,7 @@ def create(path):
 								widgets=widgets).start()
 	
 	'''Get metadata from files and store information in metadata table'''
+
 	progress = 0
 	for entry in files:
 		fhash = hash(entry.path)
@@ -103,8 +107,6 @@ def create(path):
 
 def check(path, update=True):
 	start_time = time.perf_counter()
-
-	'''Pivot metadata to path column'''
 
 	if not exists(path + metadata_file_path):
 		print("No metadata file found!")
@@ -161,6 +163,7 @@ def check(path, update=True):
 	total = 0
 
 	'''Compare current metadata to metadata table and check file integrity'''
+
 	for entry in files:
 		current_hash = hash(entry.path)
 		current_mtime = os.path.getmtime(entry.path)
@@ -201,6 +204,7 @@ def check(path, update=True):
 	metadata_file.close()
 
 	'''Update metadata table to new version'''
+
 	if(update):
 		if(changed != 0 or new != 0 or total < len(metadata_pivot)-1):
 			print("Writing new metadata...")
@@ -251,7 +255,8 @@ def main():
 		global verbose
 		verbose = True
 
-	'''Strip backslash and quotes at the end of the path'''
+	'''Remove backslash and quotes at the end of the path'''
+
 	args.path[0] = re.sub('\\"$', '', args.path[0])
 
 	if(args.command[0] == "create"):
