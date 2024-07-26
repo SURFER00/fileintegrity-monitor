@@ -13,7 +13,7 @@ This tool can't detect file corruption of files that have been changed and there
 
 # Installation
 ```sh
-git clone https://github.com/Surferr0815/fileintegrity-monitor.git fileintegrity-monitor
+git clone https://github.com/SURFER00/fileintegrity-monitor.git fileintegrity-monitor
 pip install -r fileintegrity-monitor/requirements.txt
 ```
 
