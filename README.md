@@ -1,4 +1,4 @@
-# Python File Integrity Monitor
+# fileintegrity-monitor
 A python script to monitor checksums of your files and detect possible data corruption as well as changed files.
 
 # How it works
