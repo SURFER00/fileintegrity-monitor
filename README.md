@@ -1,5 +1,5 @@
 # fileintegrity-monitor
-A python script to monitor checksums of your files and detect possible data corruption as well as changed files.
+A python script to monitor checksums of your files and detect possible data corruption.
 
 # How it works
 To detect data corruption, the script compares the current file modification timestamps with the ones from an index file.
